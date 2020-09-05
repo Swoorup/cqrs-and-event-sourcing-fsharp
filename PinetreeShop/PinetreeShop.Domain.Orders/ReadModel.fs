@@ -114,7 +114,7 @@ module private DataAccess =
         }
         |> Seq.toList        
         |> List.groupBy (fun ((o:dbSchema.dataContext.``Orders.OrderEntity``), ol) -> o.Id)
-        |> List.map (fun (k, v) -> v)
+        |> List.map snd
         |> List.map (fun ol -> 
             let ol' = List.map (fun (_, y) -> y) ol
             let (o, _) = ol.Head
